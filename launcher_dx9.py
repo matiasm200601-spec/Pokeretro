@@ -13,7 +13,7 @@ GITHUB_REPO   = "Pokeretro"
 GITHUB_BRANCH = "main"
 RAW_BASE      = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/{GITHUB_BRANCH}"
 MANIFEST_URL  = f"{RAW_BASE}/manifest.json"
-GAME_EXE      = "PokePere Dx9.exe"
+GAME_EXE      = "OTClient DX9.exe"
 GAME_FOLDER   = ""
 WINDOW_W      = 960
 WINDOW_H      = 400
@@ -106,6 +106,17 @@ class Launcher:
         self.root.title("PokeRetro Launcher - Dx9")
         self.root.geometry(f"{WINDOW_W}x{WINDOW_H}")
         self.root.resizable(False, False)
+        self.root.overrideredirect(True)   # quita la barra de título de Windows
+
+        # Centrar ventana en pantalla
+        sw = self.root.winfo_screenwidth()
+        sh = self.root.winfo_screenheight()
+        x  = (sw - WINDOW_W) // 2
+        y  = (sh - WINDOW_H) // 2
+        self.root.geometry(f"{WINDOW_W}x{WINDOW_H}+{x}+{y}")
+
+        self._drag_x = 0
+        self._drag_y = 0
 
         self.canvas = tk.Canvas(root, width=WINDOW_W, height=WINDOW_H, highlightthickness=0, bd=0)
         self.canvas.place(x=0, y=0)
@@ -119,6 +130,22 @@ class Launcher:
             self.canvas.configure(bg="#1a1a2e")
 
         self.canvas.create_rectangle(0, WINDOW_H - 155, WINDOW_W, WINDOW_H, fill="#000000", stipple="gray50", outline="")
+
+        # Botón cerrar X
+        self.canvas.create_oval(WINDOW_W-36, 8, WINDOW_W-12, 32, fill="#e94560", outline="", tags="btn_close")
+        self.canvas.create_text(WINDOW_W-24, 20, text="✕", font=("Arial", 9, "bold"), fill="white", tags="btn_close")
+        # Botón minimizar —
+        self.canvas.create_oval(WINDOW_W-68, 8, WINDOW_W-44, 32, fill="#555555", outline="", tags="btn_min")
+        self.canvas.create_text(WINDOW_W-56, 20, text="—", font=("Arial", 9, "bold"), fill="white", tags="btn_min")
+
+        self.canvas.tag_bind("btn_close", "<ButtonRelease-1>", lambda e: self.root.destroy())
+        self.canvas.tag_bind("btn_min",   "<ButtonRelease-1>", lambda e: self._minimize())
+        self.canvas.tag_bind("btn_close", "<Enter>", lambda e: self.canvas.itemconfig("btn_close", fill="#c73652") if True else None)
+        self.canvas.tag_bind("btn_close", "<Leave>", lambda e: self._recolor_close())
+
+        # Arrastrar ventana
+        self.canvas.bind("<ButtonPress-1>",   self._drag_start)
+        self.canvas.bind("<B1-Motion>",        self._drag_motion)
 
         font_path = os.path.join(get_launcher_dir(), "Pokemon Solid.ttf")
         self.title_img = make_title_image("PokeRetro", font_path, 72, WINDOW_W, 110)
@@ -156,6 +183,30 @@ class Launcher:
         self.canvas.bind("<ButtonRelease-1>", self._on_click)
 
         threading.Thread(target=self.run_update, daemon=True).start()
+
+    def _minimize(self):
+        self.root.overrideredirect(False)
+        self.root.iconify()
+        self.root.after(200, lambda: self.root.overrideredirect(True))
+
+    def _recolor_close(self):
+        for item in self.canvas.find_withtag("btn_close"):
+            if self.canvas.type(item) == "oval":
+                self.canvas.itemconfig(item, fill="#e94560")
+
+    def _drag_start(self, event):
+        self._drag_x = event.x
+        self._drag_y = event.y
+
+    def _drag_motion(self, event):
+        # No arrastrar si click en botones
+        if event.x > WINDOW_W - 80 and event.y < 40:
+            return
+        dx = event.x - self._drag_x
+        dy = event.y - self._drag_y
+        x  = self.root.winfo_x() + dx
+        y  = self.root.winfo_y() + dy
+        self.root.geometry(f"+{x}+{y}")
 
     def set_status(self, text):
         def _u():
@@ -252,7 +303,7 @@ class Launcher:
             subprocess.Popen([exe_path], cwd=game_dir)
             self.root.after(500, self.root.destroy)
         else:
-            self.set_status("Juego no encontrado. Verificá tu conexión e intentá de nuevo.")
+            self.set_status(f"No encontrado: {exe_path}")
 
 if __name__ == "__main__":
     root = tk.Tk()
