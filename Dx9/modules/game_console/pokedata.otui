@@ -1,0 +1,149 @@
+SkillWindow < UIMiniWindow
+  font: verdana-11px-antialised
+  icon-rect: 4 4 16 16
+  width: 100
+  height: 200
+  text-offset: 24 5
+  text-align: topLeft
+  image-source: /images/miniwindow.png
+  image-border: 4
+  image-border-top: 23
+  image-border-bottom: 4
+  focusable: false
+  &minimizedHeight: 24
+
+  $on:
+    image-border-bottom: 2
+
+
+BorderlessGameWindow < UIWindow
+  focusable: false
+  margin: 2
+
+FISHBAR < ProgressBar
+  id: fishbar
+  height: 5
+  background-color: #44ff44
+  anchors.top: prev.bottom
+  anchors.left: prev.left
+  anchors.right: prev.right
+  margin-top: 2
+
+
+
+SkillWindow
+  id: PokeData
+  size: 360 60
+  @onEscape: self:destroy()
+  Panel
+    id: pokepanel
+    anchors.left: parent.left
+    size: 200 50
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    height: 58
+    margin-bottom: 2
+    border-width: 1
+    border-color: #00000077
+    background-color: #ffffff11
+  UIItem
+    id: SL
+    anchors.top: pokepanel.top
+    anchors.left: pokepanel.left
+    margin-left: 3
+    size: 35 35
+    margin-top: 3
+    phantom: false
+    opacity: 2
+  ProgressBar
+    id: bar
+    !text: tr('??/??')
+    anchors.top: nome.bottom
+    anchors.left: nome.left
+    anchors.right: pokepanel.right
+    margin-top: 2
+    margin-right: 4
+    height: 15
+    width: 200
+  FISHBAR
+  GameLabel
+    id: nome
+    color: white
+    font: verdana-11px-rounded
+    anchors.top: SL.top
+    anchors.left: SL.right
+    margin-left: 4
+    margin-top: -2
+    !text: tr('Name:                                                 ')
+  GameLabel
+    id: lvla
+    color: white
+    font: verdana-11px-rounded
+    anchors.top: fishbar.bottom
+    anchors.left: fishbar.horizontalCenter
+    margin-left: 4
+    !text: tr('[?]      ')
+  Button
+    width: 40
+    id: mve
+    !text: tr('Order')
+    anchors.left: pokepanel.right
+    anchors.top: parent.top
+    margin-left: 6
+    margin-top: 3
+    @onClick: modules.game_console.pressB('m')
+  Button
+    width: 40
+    id: locka
+    !text: tr('Unlock')
+    anchors.left: prev.right
+    anchors.top: mve.top
+    margin-left: 6
+    @onClick: modules.game_console.pressB('b')
+  Button
+    width: 40
+    id: reala
+    !text: tr('Heal')
+    anchors.left: pokepanel.right
+    anchors.bottom: parent.bottom
+    margin-left: 6
+    margin-bottom: 6
+    enabled: false
+    @onClick: modules.game_console.pressB('h')
+  Button
+    width: 40
+    id: locka
+    !text: tr('Correr')
+    anchors.left: prev.right
+    anchors.bottom: parent.bottom
+    margin-left: 6
+    margin-bottom: 6
+    @onClick: modules.game_console.pressB('c')
+  TabButton
+    id: LBB
+    anchors.left: prev.right
+    anchors.top: reala.top
+    margin-left: 6
+    margin-top: -8
+    icon: lefticon.png
+    @onClick: modules.game_console.pressA(3)
+  TabButton
+    anchors.left: prev.right
+    anchors.top: reala.top
+    margin-top: -18
+    margin-left: 2
+    icon: upicon.png
+    @onClick: modules.game_console.pressA(0)
+  TabButton
+    anchors.left: LBB.right
+    anchors.top: prev.bottom
+    icon: downicon.png
+    margin-top: 2
+    margin-left: 2
+    @onClick: modules.game_console.pressA(2)
+  TabButton
+    anchors.left: prev.right
+    anchors.top: LBB.top
+    icon: righticon.png
+    margin-left: 2
+    @onClick: modules.game_console.pressA(1)

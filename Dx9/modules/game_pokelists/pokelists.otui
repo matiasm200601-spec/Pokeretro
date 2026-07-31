@@ -1,0 +1,294 @@
+SkillWindow < UIMiniWindow
+  font: verdana-11px-antialised
+  icon-rect: 4 4 16 16
+  width: 100
+  height: 200
+  text-offset: 24 5
+  text-align: topLeft
+  image-source: /images/miniwindow.png
+  image-border: 4
+  image-border-top: 23
+  image-border-bottom: 4
+  focusable: false
+  &minimizedHeight: 24
+
+  $on:
+    image-border-bottom: 2
+
+  VerticalScrollBar
+    id: miniwindowScrollBar
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    step: 14
+    margin-top: 22
+    margin-right: 3
+    margin-bottom: 3
+    pixels-scroll: true
+
+    $!on:
+      width: 0
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 3
+    minimum: 48
+    margin-left: 3
+    margin-right: 3
+    background: #ffffff88
+
+SkillWindowWindowContents < ScrollablePanel
+  id: contentsPanel
+  anchors.fill: parent
+  anchors.right: miniwindowScrollBar.left
+  margin-left: 3
+  margin-bottom: 3
+  margin-top: 22
+  margin-right: 1
+  vertical-scrollbar: miniwindowScrollBar
+
+BorderlessGameWindow < UIWindow
+  focusable: false
+  margin: 2
+
+
+SkillWindow
+  id: wpwwd
+  size: 80 320
+  icon: www.png
+  @onClose: modules.game_pokelists.onclosew()
+  &save: true
+  opacity: 0.8
+  MiniWindowContents
+    id: jooj
+    layout: verticalBox
+  UIItem
+    id: SL1
+    anchors.top: prev.top
+    anchors.left: parent.left
+    margin-left: 5
+    size: 35 35
+    phantom: false
+    &save: true
+    opacity: 2
+    @onClick: modules.game_pokelists.SL(1)
+  UIItem
+    id: SL2
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: 5
+    margin-top: 15
+    size: 35 35
+    phantom: false
+    &save: true
+    opacity: 1
+    @onClick: modules.game_pokelists.SL(2)
+  UIItem
+    id: SL3
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: 5
+    margin-top: 15
+    size: 35 35
+    phantom: false
+    &save: true
+    opacity: 1
+    @onClick: modules.game_pokelists.SL(3)
+  UIItem
+    id: SL4
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: 5
+    margin-top: 15
+    size: 35 35
+    phantom: false
+    &save: true
+    opacity: 1
+    @onClick: modules.game_pokelists.SL(4)
+  UIItem
+    id: SL5
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: 5
+    margin-top: 15
+    size: 35 35
+    phantom: false
+    &save: true
+    opacity: 1
+    @onClick: modules.game_pokelists.SL(5)
+  UIItem
+    id: SL6
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: 5
+    margin-top: 15
+    size: 35 35
+    phantom: false
+    &save: true
+    opacity: 1
+    @onClick: modules.game_pokelists.SL(6)
+  Label
+    id: TT1
+    !text: tr('--%%   ')
+    color: red
+    anchors.top: SL1.top
+    anchors.left: SL1.left
+    margin-left: 4
+    margin-top: 35
+    opacity: 1
+  Label
+    id: TT2
+    !text: tr('--%%   ')
+    color: red
+    anchors.top: SL2.top
+    anchors.left: SL2.left
+    margin-left: 4
+    margin-top: 35
+    opacity: 1
+  Label
+    id: TT3
+    !text: tr('--%%   ')
+    color: red
+    anchors.top: SL3.top
+    anchors.left: SL3.left
+    margin-left: 4
+    margin-top: 35
+    opacity: 1
+  Label
+    id: TT4
+    !text: tr('--%%   ')
+    color: red
+    anchors.top: SL4.top
+    anchors.left: SL4.left
+    margin-left: 4
+    margin-top: 35
+    opacity: 1
+  Label
+    id: TT5
+    !text: tr('--%%   ')
+    color: red
+    anchors.top: SL5.top
+    anchors.left: SL5.left
+    margin-left: 4
+    margin-top: 35
+    opacity: 1
+  Label
+    id: TT6
+    !text: tr('--%%   ')
+    color: red
+    anchors.top: SL6.top
+    anchors.left: SL6.left
+    margin-left: 4
+    margin-top: 35
+    opacity: 1
+  GameLabel
+    id: SS1
+    anchors.top: SL1.top
+    anchors.right: SL1.right
+    margin-top: 3
+    margin-right: 3
+    image-source: skull_white.png
+    size: 11 11
+    opacity: 1
+  GameLabel
+    id: SS2
+    anchors.top: SL2.top
+    anchors.right: SL2.right
+    margin-top: 3
+    margin-right: 3
+    image-source: skull_white.png
+    size: 11 11
+    opacity: 1
+  GameLabel
+    id: SS3
+    anchors.top: SL3.top
+    anchors.right: SL3.right
+    margin-top: 3
+    margin-right: 3
+    image-source: skull_white.png
+    size: 11 11
+    opacity: 1
+  GameLabel
+    id: SS4
+    anchors.top: SL4.top
+    anchors.right: SL4.right
+    margin-top: 3
+    margin-right: 3
+    image-source: skull_white.png
+    size: 11 11
+    opacity: 1
+  GameLabel
+    id: SS5
+    anchors.top: SL5.top
+    anchors.right: SL5.right
+    margin-top: 3
+    margin-right: 3
+    image-source: skull_white.png
+    size: 11 11
+    opacity: 1
+  GameLabel
+    id: SS6
+    anchors.top: SL6.top
+    anchors.right: SL6.right
+    margin-top: 3
+    margin-right: 3
+    image-source: skull_white.png
+    size: 11 11
+    opacity: 1
+  Label
+    id: LVL1
+    !text: tr('?       ')
+    color: white
+    anchors.top: SL1.top
+    anchors.left: SL1.left
+    margin-left: 38
+    margin-top: 0
+    opacity: 1
+  Label
+    id: LVL2
+    !text: tr('?       ')
+    color: white
+    anchors.top: SL2.top
+    anchors.left: SL2.left
+    margin-left: 38
+    margin-top: 0
+    opacity: 1
+  Label
+    id: LVL3
+    !text: tr('?       ')
+    color: white
+    anchors.top: SL3.top
+    anchors.left: SL3.left
+    margin-left: 38
+    margin-top: 0
+    opacity: 1
+  Label
+    id: LVL4
+    !text: tr('?       ')
+    color: white
+    anchors.top: SL4.top
+    anchors.left: SL4.left
+    margin-left: 38
+    margin-top: 0
+    opacity: 1
+  Label
+    id: LVL5
+    !text: tr('?       ')
+    color: white
+    anchors.top: SL5.top
+    anchors.left: SL5.left
+    margin-left:39
+    margin-top: 0
+    opacity: 1
+  Label
+    id: LVL6
+    !text: tr('?       ')
+    color: white
+    anchors.top: SL6.top
+    anchors.left: SL6.left
+    margin-left: 39
+    margin-top: 0
+    opacity: 1

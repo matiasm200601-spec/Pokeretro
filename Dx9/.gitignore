@@ -1,0 +1,20 @@
+# Logs
+*.log
+
+# Base de datos
+*.s3db
+*.db
+
+# Python / PyInstaller
+launcher.py
+generate_manifest.py
+__pycache__/
+build/
+dist/
+*.spec
+*.pyc
+
+# Archivos temporales
+*.tmp
+*.bak
+Thumbs.db

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Python
 __pycache__/
 *.py[cod]
@@ -42,3 +43,12 @@ desktop.ini
 *.tmp
 *.bak
 *.old
+=======
+build_dx9/
+build_opengl/
+*.spec
+__pycache__/
+*.pyc
+.launcher_cache.json
+pokmaster.log
+>>>>>>> 2be7fb07ee119a43bdaa1023b3718c371bc9202b

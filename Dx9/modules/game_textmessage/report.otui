@@ -1,0 +1,154 @@
+LineList < UILabel
+  font: verdana-11px-monochrome
+  background-color: alpha
+  text-offset: 2 0
+  phantom: false
+
+  $focus:
+    background-color: #ffffff22
+MainWindow
+  id: textWindow
+  size: 280 410
+  !text: tr('Report')
+  @onEscape: modules.game_textmessage.Kill()
+  Label
+    id: Stt
+    !text: tr('Sent by: ')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: text.top
+    text-align: left
+    margin-bottom: 10
+  Label
+    id: sender
+    color: #99ff99
+    !text: tr('-               -')
+    anchors.top: parent.top
+    anchors.left: prev.right
+  Button
+    id: copysender
+    !text: tr('Copy')
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: -4
+    @onClick:  modules.game_textmessage.copyToClip('sender')
+  Label
+    id: Stt2
+    !text: tr('Reported: ')
+    anchors.top: Stt.bottom
+    anchors.left: parent.left
+    anchors.bottom: text.top
+    text-align: left
+    margin-top: 10
+  Label
+    id: reported
+    !text: tr('-             -')
+    anchors.top: Stt.bottom
+    anchors.left: prev.right
+    color: #ff9999
+    margin-top: 10
+  Button
+    id: copyreported
+    !text: tr('Copy')
+    anchors.top: Stt.bottom
+    anchors.right: parent.right
+    margin-top: 10
+    @onClick:  modules.game_textmessage.copyToClip('reported')
+  Label
+    id: Stt3
+    !text: tr('At: ')
+    anchors.top: Stt2.bottom
+    anchors.left: parent.left
+    anchors.bottom: text.top
+    text-align: left
+    margin-top: 10
+  Label
+    id: ttime
+    !text: tr('-                                        -')
+    anchors.top: Stt2.bottom
+    anchors.left: prev.right
+    color: #9999ff
+    margin-top: 10
+  Button
+    id: copytyime
+    !text: tr('Copy')
+    anchors.top: Stt2.bottom
+    anchors.right: parent.right
+    margin-top: 10
+    @onClick:  modules.game_textmessage.copyToClip('ttime')
+  Label
+    id: dd
+    !text: tr('Description')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    text-align: left
+    margin-bottom: 10
+  TextList
+    id: desc
+    size: 100 25
+    focusable: false
+    text-align: left
+    anchors.top: prev.bottom
+    margin-top: 10
+    anchors.left: parent.left
+    anchors.right: parent.right
+  Button
+    id: copysender
+    !text: tr('Copy description')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    @onClick:  modules.game_textmessage.copyToClip('desc')
+  TextList
+    id: com
+    size: 100 95
+    focusable: false
+    text-align: left
+    anchors.top: prev.bottom
+    margin-top: 10
+    margin-right: 10
+    anchors.left: parent.left
+    anchors.right: parent.right
+  TextScrollbar
+    id: textScroll
+    anchors.left: prev.right
+    anchors.top: prev.top
+    anchors.bottom: prev.bottom
+    minimum: 0
+    maximum: 0
+    step: 1
+    value: 0
+    pixels-scroll: true
+  Button
+    id: copysender
+    !text: tr('Copy comments')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    @onClick:  modules.game_textmessage.copyToClip('com')
+  Button
+    id: solve
+    !text: tr('Mark as solved')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    @onClick:  modules.game_textmessage.Solve()
+  Button
+    id: ctry
+    !text: tr('Open rule violation')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    @onClick:  modules.game_ruleviolation.show()
+  Button
+    id: kill
+    !text: tr('Close window')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    @onClick:  modules.game_textmessage.Kill()

@@ -1,0 +1,47 @@
+LineList < UILabel
+  font: verdana-11px-monochrome
+  background-color: alpha
+  text-offset: 2 0
+  phantom: false
+
+  $focus:
+    background-color: #ffffff22
+
+MiniWindow
+  id: new
+  !text: tr('Site news')
+  size: 636 574
+  @onEscape: hidz()
+  MiniWindowContents
+    id: jooj
+    layout: verticalBox
+  VerticalScrollBar
+    id: scrolando
+    height: 150
+    anchors.top: parent.top
+    anchors.left: parent.right
+    anchors.bottom: parent.bottom
+    step: 1
+    margin-top: 20
+    margin-bottom: 20
+    margin-left: -20
+    pixels-scroll: true
+
+  TextList
+    id: newsC
+    vertical-scrollbar: scrolando
+    anchors.left: parent.left
+    anchors.right: prev.left
+    anchors.top: parent.top
+    anchors.bottom: prev.bottom
+    padding: 1
+    margin-left: 5
+    margin-top: 20
+    focusable: false
+  Button
+    !text: tr('Close')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick:  hidz()
+
