@@ -1,20 +1,7 @@
-# Logs
-*.log
-
-# Base de datos
-*.s3db
-*.db
-
-# Python / PyInstaller
-launcher.py
-generate_manifest.py
-__pycache__/
-build/
-dist/
+build_dx9/
+build_opengl/
 *.spec
+__pycache__/
 *.pyc
-
-# Archivos temporales
-*.tmp
-*.bak
-Thumbs.db
+.launcher_cache.json
+pokmaster.log
