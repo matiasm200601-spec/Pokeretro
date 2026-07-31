@@ -1,0 +1,58 @@
+ReprList < UILabel
+  font: verdana-11px-monochrome
+  background-color: alpha
+  text-offset: 2 0
+  focusable: true
+  phantom: false
+
+  $focus:
+    background-color: #ffffff22
+LineList < UILabel
+  font: verdana-11px-monochrome
+  background-color: alpha
+  text-offset: 2 0
+  phantom: false
+
+  $focus:
+    background-color: #ffffff22
+
+MainWindow
+  size: 200 300
+  !text: tr('Reports')
+  background-color: alpha
+  focusable: true
+  phantom: false
+  @onEscape: modules.game_console.closeRep()
+
+  VerticalScrollBar
+    id: scrollzs
+    height: 150
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: cl.top
+    step: 14
+    pixels-scroll: true
+    margin-bottom: 5
+  TextList
+    id: listoza
+    vertical-scrollbar: scrollzs
+    anchors.left: parent.left
+    anchors.right: prev.left
+    anchors.top: prev.top
+    anchors.bottom: prev.bottom
+    padding: 1
+    focusable: false
+  Button
+    id: cl
+    !text: tr('Close')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick:  modules.game_console.closeRep()
+  Button
+    id: chk
+    !text: tr('Check')
+    width: 64
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    @onClick:  modules.game_console.Scan()

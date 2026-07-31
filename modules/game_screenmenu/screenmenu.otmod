@@ -1,0 +1,9 @@
+Module
+  name: game_screenmenu
+  description: Help newcomers on otclient
+  author: Mock
+  website: matheus.mtb7@gmail.com
+  sandboxed: true
+  scripts: [ screenmenu.lua ]
+  @onLoad: init()
+  @onUnload: terminate()

@@ -1,0 +1,230 @@
+HealthBar < ProgressBar
+  id: healthBar
+  height: 15
+  margin-top: -1
+  margin-left: 2
+  background-color: #ff4444
+  anchors.top: outfitCreatureBox.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+XPBAR < ProgressBar
+  id: expbar
+  height: 14
+  background-color: #44ff44
+  anchors.top: xplabels.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+  margin-top: 4
+explabel < GameLabel
+  id: expeLabel
+  color: white
+  text-align: center
+  font: verdana-11px-rounded
+  anchors.fill: expbar
+  margin-top: 2
+  text: 0 / 0
+  margin-top: 4
+
+HealthLabel < GameLabel
+  id: healthLabel
+  color: white
+  text-align: center
+  font: verdana-11px-rounded
+  anchors.fill: healthBar
+  margin-top: 2
+  text: 0 / 0
+
+
+
+SoulLabel < GameLabel
+  id: soulLabel
+  text-align: right
+  color: white
+  font: verdana-11px-rounded
+  anchors.bottom: parent.bottom
+  anchors.right: parent.right
+  anchors.left: parent.horizontalCenter
+  margin-top: 5
+  margin-right: 3
+  text: Catch: 000
+
+CapLabel < GameLabel
+  id: capLabel
+  color: white
+  font: verdana-11px-rounded
+  anchors.bottom: parent.bottom
+  anchors.left: parent.left
+  anchors.right: parent.horizontalCenter
+  margin-top: 5
+  margin-left: 3
+  text: Cap:
+TournamentLabel < GameLabel
+  id: tourlab
+  color: white
+  font: verdana-11px-rounded
+  anchors.top: prev.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+  margin-top: 2
+  margin-left: 3
+  text: Tournament: 000
+Fishlabel < GameLabel
+  id: fishlab
+  color: white
+  font: verdana-11px-rounded
+  anchors.top: tourlab.bottom
+  anchors.left: parent.left
+  anchors.right: parent.horizontalCenter
+  margin-top: 2
+  margin-left: 3
+  text: Fishing:
+FISHBAR < ProgressBar
+  id: fishbar
+  height: 5
+  background-color: #44ff44
+  anchors.top: prev.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+  margin-top: 1
+HealthLabel2 < GameLabel
+  id: hplab
+  color: white
+  font: verdana-11px-rounded
+  anchors.top: outfitCreatureBox.bottom
+  anchors.left: parent.left
+  margin-top: 4
+  margin-left: 3
+  text: -
+
+
+
+XPLABB < GameLabel
+  id: xplabels
+  color: white
+  font: verdana-11px-rounded
+  anchors.top: call1.bottom
+  anchors.left: parent.left
+  margin-top: 4
+  margin-left: 3
+  text: Experiência
+
+
+ConditionWidget < UIWidget
+  size: 18 18
+
+  $!first:
+    margin-left: 2
+
+MiniWindow
+  icon: healthinfo.png
+  id: healthInfoWindow
+  !text: tr('Informações')
+  height: 253
+  @onClose: modules.game_healthinfo.onMiniWindowClose()
+  &save: true
+
+  MiniWindowContents
+    Creature
+      id: outfitCreatureBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 5
+      margin-left: 5
+      padding: 4 4 4 4
+      fixed-creature-size: true
+
+    HealthBar
+    HealthLabel
+    GameLabel
+      color: white
+      id: laevla
+      font: terminus-14px-bold
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 5
+      margin-left: 3
+      text: Pokemon:
+    GameLabel
+      id: call1
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-top: 1
+      margin-right: 3
+      image-source: bolas.png
+      size: 16 16
+    GameLabel
+      id: call2
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-right: 3
+      image-source: bolas.png
+      size: 16 16
+    GameLabel
+      id: call3
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-right: 3
+      image-source: bolas.png
+      size: 16 16
+    GameLabel
+      id: call4
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-right: 3
+      image-source: bolas.png
+      size: 16 16
+    GameLabel
+      id: call5
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-right: 3
+      image-source: bolas.png
+      size: 16 16
+    GameLabel
+      id: call6
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-right: 3
+      image-source: bolas.png
+      size: 16 16
+    GameLabel
+      color: white
+      id: naem
+      font: verdana-11px-rounded
+      anchors.top: parent.top
+      anchors.left: outfitCreatureBox.right
+      anchors.right: parent.right
+      margin-top: 5
+      margin-left: 3
+      text: -------
+    GameLabel
+      color: white
+      id: laevl
+      font: terminus-14px-bold
+      anchors.top: prev.bottom
+      anchors.left: outfitCreatureBox.right
+      anchors.right: parent.right
+      margin-top: 5
+      margin-left: 3
+      text: Lvl: 0000
+    XPLABB
+    XPBAR
+    explabel
+    Panel
+      id: conditionPanel
+      layout:
+        type: horizontalBox
+      height: 22
+      margin-top: 4
+      padding: 2
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      border-width: 1
+      border-color: #00000077
+      background-color: #ffffff11
+    TournamentLabel
+    Fishlabel
+    FISHBAR
+    SoulLabel
+    CapLabel

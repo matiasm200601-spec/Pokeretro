@@ -1,0 +1,35 @@
+TextScrollbar < VerticalScrollBar
+
+MainWindow
+  id: infoWindow
+  size: 280 280
+  @onEscape: self:destroy()
+
+  MultilineTextEdit
+    id: text
+    anchors.fill: parent
+    anchors.top: parent.top
+    margin-right: 10
+    margin-top: 30
+    margin-bottom: 30
+
+
+  TextScrollbar
+    id: textScroll
+    anchors.left: prev.right
+    anchors.top: prev.top
+    anchors.bottom: prev.bottom
+    minimum: 0
+    maximum: 0
+    step: 1
+    value: 0
+    pixels-scroll: true
+
+  Button
+    id: cancelButton
+    !text: tr('Close')
+    anchors.bottom: parent.bottom
+    anchors.left: parent.horizontalCenter
+    margin-right: 8
+    width: 60
+    @onClick: self:getParent():destroy()

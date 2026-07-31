@@ -1,0 +1,9 @@
+Module
+  name: game_news
+  description: Show website news :3
+  author: Mock
+  website: matheus.mtb7@gmail.com
+  sandboxed: true
+  scripts: [ news.lua ]
+  @onLoad: init()
+  @onUnload: terminate()

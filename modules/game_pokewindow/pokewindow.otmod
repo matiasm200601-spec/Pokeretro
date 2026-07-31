@@ -1,0 +1,9 @@
+Module
+  name: game_pokewindow
+  description: Manage skills window
+  author: Mock
+  website: matheus.mtb7@gmail.com
+  sandboxed: true
+  scripts: [ pokewindow.lua ]
+  @onLoad: init()
+  @onUnload: terminate()

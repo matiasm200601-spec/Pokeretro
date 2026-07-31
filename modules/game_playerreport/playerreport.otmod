@@ -1,0 +1,9 @@
+Module
+  name: game_playerreport
+  description: Report players
+  author: Mock
+  website: matheus.mtb7@gmail.com
+  scripts: [ playerreport.lua ]
+  sandboxed: true
+  @onLoad: init()
+  @onUnload: terminate()

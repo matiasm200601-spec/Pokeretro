@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.spec
+
+# PyInstaller
+build_launcher/
+*.exe
+!Dx9/*.exe
+!OpenGL/*.exe
+
+# Logs
+*.log
+otclient.log
+crashreport.log
+pokmaster.log
+psfclient.log
+
+# Cache
+.launcher_cache.json
+*.pyc
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporales
+*.tmp
+*.bak
+*.old
