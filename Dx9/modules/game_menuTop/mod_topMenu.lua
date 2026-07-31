@@ -4,6 +4,7 @@ local bagIcon = nil
 local fishingIcon = nil
 local pokedexIcon = nil
 local ropeIcon = nil
+local hotkeysIcon = nil
 
 local path = '/images/ui/pxg/topMenu_icons/'
 local currentSlot = 0
@@ -27,6 +28,9 @@ function init()
    ropeIcon = modules.client_topmenu.addCustomRightButton('ropeIcon', 'Rope', path..'rope_icon', toggleRopeIcon, true)
    ropeIcon:setVisible(false)
 
+   hotkeysIcon = modules.client_topmenu.addCustomRightButton('hotkeysIcon', 'Hotkeys (Ctrl+K)', path..'atalhos_icon', toggleHotkeysIcon, true)
+   hotkeysIcon:setVisible(false)
+
    connect(g_game, { onGameStart = online,
                      onGameEnd = offline })
 end
@@ -37,6 +41,7 @@ function terminate()
    pokedexIcon:destroy()
    duelIcon:destroy()
    ropeIcon:destroy()
+   hotkeysIcon:destroy()
 end
 
 function offline()
@@ -47,6 +52,7 @@ function offline()
    pokedexIcon:setVisible(false)
    duelIcon:setVisible(false)
    ropeIcon:setVisible(false)
+   hotkeysIcon:setVisible(false)
 end       
 
 
@@ -55,6 +61,7 @@ function online()
    fishingIcon:setVisible(true)
    pokedexIcon:setVisible(true)
    ropeIcon:setVisible(true)
+   hotkeysIcon:setVisible(true)
 end
 
 -- Complex functions
@@ -140,5 +147,9 @@ end
 function toggleDuelIcon()
   currentSlot = 4
   startChooseItem(onClickWithMouse)
+end
+
+function toggleHotkeysIcon()
+  modules.game_hotkeys.toggle()
 end
 -- End public functions
