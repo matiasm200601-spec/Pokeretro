@@ -1,0 +1,9 @@
+Module
+  name: game_radio
+  description: Manage vip list window
+  author: baxnie, edubart
+  website: www.otclient.info
+  sandboxed: true
+  scripts: [ radio.lua ]
+  @onLoad: init()
+  @onUnload: terminate()

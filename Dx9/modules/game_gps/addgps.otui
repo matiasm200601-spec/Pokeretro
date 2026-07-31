@@ -1,0 +1,22 @@
+WPLabel < GameLabel
+  margin-top: 2
+  font: verdana-11px-monochrome
+  phantom: false
+
+  $first:
+    margin-top: 5
+
+MiniWindow
+  id: vipWindow
+  !text: tr('Waypoints')
+  height: 100
+  icon: map.png
+  @onClose: modules.game_gps.onMiniWindowClose()
+  &save: true
+  MiniWindowContents
+    anchors.top: parent.top
+    layout: verticalBox
+    padding-left: 5
+    padding-right: 5
+    margin-top: 13
+    &onMousePress: modules.game_gps.onPress

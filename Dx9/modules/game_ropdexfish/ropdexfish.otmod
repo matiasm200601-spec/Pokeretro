@@ -1,0 +1,10 @@
+Module
+  name: game_ropdexfish
+  description: Here is the Pokedex and the Fishing Rod.
+  author: Slicer (xTibia)
+  website: none
+  autoload: true
+  autoload-priority: 1000
+  scripts: [ ropdexfish ]
+  sandboxed: true
+  @onLoad: init()

@@ -1,0 +1,9 @@
+Module
+  name: game_gps
+  description: Game GPS
+  author:  Mock (matheus.mtb7@gmail.com)
+  website: -
+  sandboxed: true
+  scripts: [ gps.lua ]
+  @onLoad: init()
+  @onUnload: terminate()

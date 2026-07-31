@@ -1,0 +1,34 @@
+MainWindow
+  size: 256 158
+  !text: tr('Add to VIP list')
+  @onEnter: modules.game_viplist.addDesc()
+  @onEscape: modules.game_viplist.destroyDescWindow()
+  Label
+    !text: tr('Insert a short description')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-bottom: 10
+  TextEdit
+    id: desc
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 4
+  OptionCheckBox
+    id: notify
+    !text: tr('Notificar ao logar')
+  Button
+    !text: tr('Ok')
+    width: 64
+    anchors.right: next.left
+    anchors.bottom: parent.bottom
+    margin-right: 10
+    @onClick: modules.game_viplist.addDesc()
+
+  Button
+    !text: tr('Cancel')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_viplist.destroyDescWindow()
