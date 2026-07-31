@@ -1,0 +1,8 @@
+Module
+  name: game_house
+  description: Displays the house commands.
+  author: edubart, BeniS
+  website: www.otclient.info
+  sandboxed: true
+  scripts: [ house ]
+  @onLoad: init()

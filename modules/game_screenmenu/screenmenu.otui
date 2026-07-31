@@ -1,0 +1,71 @@
+MainWindow
+  id: enterGame
+  !text: tr('Screen menu')
+  size: 300 200
+  @onEscape: hidz()
+  Label
+    id: mess
+    !text: tr('In this window you can change some window')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-bottom: 2
+  Label
+    id: mess2
+    !text: tr('settings avaliable on otclient.')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-bottom: 2
+  Label
+    id: mess3
+    !text: tr('You can use keyboard shortcuts to do it')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-bottom: 2
+  Label
+    id: mess2
+    !text: tr('but this window can help too :3')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-bottom: 2
+  HorizontalSeparator
+    id: sep
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 10
+  HorizontalSeparator
+    id: sep
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 3
+  Button
+    !text: tr('Zoom in')
+    width: 94
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    @onClick: modules.game_interface.gameMapPanel:zoomIn(50)
+    margin-top: 5
+  Button
+    !text: tr('Zoom out')
+    width: 94
+    anchors.top: prev.top
+    anchors.right: parent.right
+    @onClick: modules.game_interface.gameMapPanel:zoomOut(50)
+    margin-left: 5
+  Button
+    !text: tr('Toggle aspect ratio')
+    width: 94
+    anchors.top: prev.bottom
+    anchors.right: parent.right
+    anchors.left: parent.left
+    @onClick: modules.game_interface.toggleAspectRatio()
+    margin-top: 5
+
+  Button
+    !text: tr('Close')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: hidz()
+

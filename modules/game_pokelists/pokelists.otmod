@@ -1,0 +1,9 @@
+Module
+  name: game_pokelists
+  description: Manage pokemon list
+  author: Mock
+  website: matheus.mtb7@gmail.com
+  sandboxed: true
+  scripts: [ pokelists.lua ]
+  @onLoad: init()
+  @onUnload: terminate()

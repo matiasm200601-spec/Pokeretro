@@ -1,0 +1,12 @@
+Jaaj < Panel
+  id: jaaj
+  anchors.fill: parent
+  TextEdit
+    id: consoleTextEdit
+    anchors.left: sayModeButton.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-right: 6
+    margin-left: 6
+    margin-bottom: 6
+    shift-navigation: true

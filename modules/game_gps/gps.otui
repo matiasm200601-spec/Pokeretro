@@ -1,0 +1,28 @@
+Pointer < UILabel
+  id: hue
+  width: 16
+  height: 16
+
+Panel
+  anchors.fill: gameMapPanel
+  focusable: false
+  UILabel
+    id: text
+    text: hueuhe
+    anchors.left: centerTextMessagePanel.left
+    anchors.top: centerTextMessagePanel.bottom
+    margin-top: 3
+    font: verdana-11px-rounded
+    text-align: center
+    text-auto-resize: true
+  Panel
+    id: centerTextMessagePanel
+    layout:
+      type: verticalBox
+      fit-children: true
+    width: 15
+    anchors.centerIn: parent
+    UILabel
+      id: middleCenterLabel
+      width: 15
+      height: 15

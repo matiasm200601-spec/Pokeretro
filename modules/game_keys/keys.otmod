@@ -1,0 +1,9 @@
+Module
+  name: game_keys
+  description: Lock window
+  author: Mock
+  website: matheus.mtb7@gmail.com
+  sandboxed: true
+  scripts: [ keys.lua ]
+  @onLoad: init()
+  @onUnload: terminate()
